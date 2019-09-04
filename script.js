@@ -49,7 +49,7 @@ function makeTopicButtonsClickable(selector) {
       const results = response.data;
 
       // For Loop - Send the response aka the results to the page in id #gifPanel
-      for (const index = 0; index < results.length; index++) {
+      for (let index = 0; index < results.length; index++) {
         // by creating a div (variable pokemonDiv)
         let pokemonDiv = $(`<div></div>`);
         // Make a paragraph tag with jQuery and store it in a variable named p.
@@ -74,7 +74,7 @@ function makeTopicButtonsClickable(selector) {
 // Run this to make the buttons
 $(document).ready(function() {
   initializeTopicButtons();
-  makeTopicButtonsClickable("button.topicbutton");
+  makeTopicButtonsClickable("button.topicButton");
 });
 
 // // When users add in a search term for additional Pokemon, clicking on the #addButton will append the #searchTag (user input) as a string to the array
