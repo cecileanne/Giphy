@@ -17,17 +17,21 @@ const topics = [
 ];
 
 // For Loop - Create buttons for each index of the array to populate #buttonRow
-for (var topicPokemonIndex = 0; i < topics.length; topicPokemonIndex++) {
-  var buttons = $(
-    "<div><button data-pokemon=`topics[topicPokemonIndex]`>" +
-      topics[topicPokemonIndex] +
-      "</button></div>"
-  );
-  buttons.appendTo("#buttonRow");
-}
+// for (
+//   var topicPokemonIndex = 0;
+//   topicPokemonIndex < topics.length;
+//   topicPokemonIndex++
+// ) {
+//   var buttons = $(
+//     "<button data-pokemon=`topics[topicPokemonIndex]`>" +
+//       topics[topicPokemonIndex] +
+//       "</button>"
+//   );
+//   buttons.appendTo("#buttonRow");
+// }
 
 // For Loop -  When users click on a button in #buttonRow will send a queryURL to giphy, limit of 10, no autoplay
-$("#buttonRow").on("click", function() {
+$("button").on("click", function() {
   const queryButton = $(this).attr("data-pokemon");
   const queryURL =
     "https://api.giphy.com/v1/gifs/search?q=" +
@@ -41,38 +45,22 @@ $("#buttonRow").on("click", function() {
     const results = response.data;
 
     // For Loop - Send the response aka the results to the page in id #gifPanel
-
     for (const index = 0; index < results.length; index++) {
       // by creating a div (variable pokemonDiv)
-
-      let pokemonDiv = $(`<div class=pokemonType></div>`);
-
+      let pokemonDiv = $(`<div></div>`);
       // Make a paragraph tag with jQuery and store it in a variable named p.
-
       let p = $(`<p></p>`);
-
       // Set the inner text of the paragraph to the rating of the image in results[i].
-
-      $(`p`).text(results[i].rating);
-
+      $(`p`).text(results[index].rating);
       // Make an image tag with jQuery and store it in a variable named pokemonImage.
-
       let pokemonImage = $(`<img>`);
-
-      // Set the image's src to results[i]'s fixed_height.url.
-
-      pokemonImage.attr("src", results[i].images.fixed_height.url);
-
+      // Set the image's src to results[i]'s fixed_height.url (but use still since we want to do on click).
+      pokemonImage.attr("src", results[index].images.fixed_height_still.url);
       // Append the p variable to the pokemonDiv variable.
-
       pokemonDiv.append(p);
-
       // Append the animalImage variable to the pokemonDiv variable.
-
       pokemonDiv.append(pokemonImage);
-
       // Prepend the pokemonDiv variable to the element with an id of gifPanel.
-
       $(`#gifPanel`).prepend(pokemonDiv);
     }
   });
@@ -89,3 +77,5 @@ $("#addButton").on("click", function(event) {
   //  Adds new topic to the topics array
   topics.push(newTopic);
 });
+
+// When users click on a still image back on and off - on click should toggle between results[index].images.fixed_height_still.url and results[index].images.fixed_height.url
