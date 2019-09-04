@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Gifmania</title>
+  </head>
+  <body>
+    <div class="row" id="buttonRow"></div>
+    <hr />
+    <div class="row">
+      <div class="col-md-8" id="gifPanel"></div>
+      <div class="col-md-4" id="searchPanel">
+        <form>
+          <span id="addTopic"
+            >Add Pokemon to search:
+            <input id="searchTag" type="text" />
+            <input id="addButton" value="Find gifs" type="submit" />
+          </span>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
