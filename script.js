@@ -16,22 +16,25 @@ const topics = [
   `Vulpix`
 ];
 
+// Function to intialize the page 
+function initializeTopicButtons() {
 // For Loop - Create buttons for each index of the array to populate #buttonRow
-// for (
-//   var topicPokemonIndex = 0;
-//   topicPokemonIndex < topics.length;
-//   topicPokemonIndex++
-// ) {
-//   var buttons = $(
-//     "<button data-pokemon=`topics[topicPokemonIndex]`>" +
-//       topics[topicPokemonIndex] +
-//       "</button>"
-//   );
-//   buttons.appendTo("#buttonRow");
-// }
+for (
+  let topicPokemonIndex = 0;
+  topicPokemonIndex < topics.length;
+  topicPokemonIndex++
+) {
+  let buttonHTML = 
+    "<button class=`topicButton` data-pokemon= + topics[topicPokemonIndex] + >" +
+      topics[topicPokemonIndex] +
+      "</button>"
+  );
+  $(buttonHTML).appendTo("#buttonRow");
+}
+}
 
 // For Loop -  When users click on a button in #buttonRow will send a queryURL to giphy, limit of 10, no autoplay
-$("button").on("click", function() {
+$("#buttonRow").on("click", function() {
   const queryButton = $(this).attr("data-pokemon");
   const queryURL =
     "https://api.giphy.com/v1/gifs/search?q=" +
@@ -66,16 +69,16 @@ $("button").on("click", function() {
   });
 });
 
-// When users add in a search term for additional Pokemon, clicking on the #addButton will append the #searchTag (user input) as a string to the array
-//  On Click event associated with the addButton
-$("#addButton").on("click", function(event) {
-  event.preventDefault();
-  //  Get the to-do "value" from the textbox and store it a variable
-  const newTopic = $("#userSearchTag")
-    .val()
-    .trim();
-  //  Adds new topic to the topics array
-  topics.push(newTopic);
-});
+// // When users add in a search term for additional Pokemon, clicking on the #addButton will append the #searchTag (user input) as a string to the array
+// //  On Click event associated with the addButton
+// $("#addButton").on("click", function(event) {
+//   event.preventDefault();
+//   //  Get the to-do "value" from the textbox and store it a variable
+//   const newTopic = $("#userSearchTag")
+//     .val()
+//     .trim();
+//   //  Adds new topic to the topics array
+//   topics.push(newTopic);
+// });
 
 // When users click on a still image back on and off - on click should toggle between results[index].images.fixed_height_still.url and results[index].images.fixed_height.url
