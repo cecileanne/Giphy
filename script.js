@@ -26,10 +26,9 @@ function initializeTopicButtons() {
     topicPokemonIndex++
   ) {
     let buttonHTML =
-      "<button class='topicButton' data-pokemon='topics[topicPokemonIndex]'>" +
-      topics[topicPokemonIndex] +
-      "</button>";
-    $(buttonHTML).appendTo("#buttonRow");
+      "<button class='topicButton'>" + topics[topicPokemonIndex] + "</button>";
+    $(".topicButton").attr("data-pokemon", topics[topicPokemonIndex]),
+      $(buttonHTML).appendTo("#buttonRow");
   }
 }
 
@@ -37,11 +36,13 @@ function initializeTopicButtons() {
 // function makeTopicButtonsClickable(selector) {
 // For Loop -  When users click on a button in #buttonRow will send a queryURL to giphy, limit of 10, no autoplay
 $(document).on("click", `.topicButton`, function() {
-  let queryButton = $(this).attr("data-pokemon");
+  let queryButton = $(this).text();
+  console.log(queryButton);
   let queryURL =
     "https://api.giphy.com/v1/gifs/search?q=" +
     queryButton +
     "&api_key=VtFYkxuLNqaMPJL3tTXdA3ekk66Q5tJg&limit=10";
+  console.log(queryURL);
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -89,6 +90,7 @@ $("#addButton").on("click", function(event) {
   //  Adds new topic to the topics array
   topics.push(newTopic);
   initializeTopicButtons();
+  //  TO DO: Clear the #userSearchTag
 });
 
-// When users click on a still image back on and off - on click should toggle between results[index].images.fixed_height_still.url and results[index].images.fixed_height.url
+// TO DO: When users click on a still image back on and off - on click should toggle between results[index].images.fixed_height_still.url and results[index].images.fixed_height.url
