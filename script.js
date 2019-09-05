@@ -59,9 +59,11 @@ $(document).on("click", `.topicButton`, function() {
       // Set the inner text of the paragraph to the rating of the image in results[i].
       $(`p`).text(`Rating: ` + results[index].rating);
       // Make an image tag with jQuery and store it in a variable named pokemonImage.
-      let pokemonImage = $(`<img>`);
+      let pokemonImage = $(`<img class="imageCall">`);
+      let pokemonImageAnimated = $(`<img class="imageCall">`);
       // Set the image's src to results[i]'s fixed_height.url (but use still since we want to do on click).
       pokemonImage.attr("src", results[index].images.fixed_height_still.url);
+      pokemonImageAnimated.attr("src", results[index].images.fixed_height.url);
       // Append the p variable to the pokemonDiv variable.
       pokemonDiv.append(p);
       // Append the animalImage variable to the pokemonDiv variable.
@@ -73,12 +75,14 @@ $(document).on("click", `.topicButton`, function() {
 });
 // }
 // TO DO: When users click on a still image back on and off - on click should toggle between results[index].images.fixed_height_still.url and results[index].images.fixed_height.url
-// $(pokemonDiv).on("click"), function(pokemonImage.attr) {
-//   if src="results[index].images.fixed_height_still.url"
-//   src="results[index].images.fixed_height.url"
-
-//   } else src="results[index].images.fixed_height_still.url"
-// };
+// $(pokemonDiv).on("click") {
+//   if pokemonImage.attr("src", results[index].images.fixed_height_still.url) = true;
+//   $(".imageCall").empty();
+// pokemonDiv.append(pokemonImageAnimated);
+// } else {
+//   $(".imageCall").empty();
+//   pokemonDiv.append(pokemonImage);
+// }
 
 // Run this to make the buttons
 $(document).ready(function() {
@@ -97,6 +101,6 @@ $("#addButton").on("click", function(event) {
   //  Adds new topic to the topics array
   topics.push(newTopic);
   initializeTopicButtons();
-  //  TO DO: Clear the #userSearchTag
+  //  Clear the #userSearchTag
   $("#userSearchTag").val("");
 });
