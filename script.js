@@ -72,6 +72,13 @@ $(document).on("click", `.topicButton`, function() {
   });
 });
 // }
+// TO DO: When users click on a still image back on and off - on click should toggle between results[index].images.fixed_height_still.url and results[index].images.fixed_height.url
+// $(pokemonDiv).on("click"), function(pokemonImage.attr) {
+//   if src="results[index].images.fixed_height_still.url"
+//   src="results[index].images.fixed_height.url"
+
+//   } else src="results[index].images.fixed_height_still.url"
+// };
 
 // Run this to make the buttons
 $(document).ready(function() {
@@ -91,6 +98,5 @@ $("#addButton").on("click", function(event) {
   topics.push(newTopic);
   initializeTopicButtons();
   //  TO DO: Clear the #userSearchTag
+  $("#userSearchTag").val("");
 });
-
-// TO DO: When users click on a still image back on and off - on click should toggle between results[index].images.fixed_height_still.url and results[index].images.fixed_height.url
